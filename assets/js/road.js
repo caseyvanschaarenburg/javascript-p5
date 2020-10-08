@@ -15,6 +15,9 @@ class Road {
 
      static reset() {
         segments = [];
+         Road.addCurve(ROAD.LENGTH.LONG, ROAD.CURVE.MEDIUM, 0);
+         Road.addStraight();
+         Road.addSCurves();
         Road.addStraight();
         Road.addStraight();
         Road.addStraight();
@@ -31,5 +34,21 @@ class Road {
         num = num || ROAD.LENGTH.MEDIUM;
         Road.add(num, num, num, 0, 0);
       }
+
+
+    static addCurve(num, curve, height) {
+        num = num || ROAD.LENGTH.MEDIUM;
+        curve = curve || ROAD.CURVE.MEDIUM;
+        height = height || ROAD.HILL.NONE;
+        Road.add(num, num, num, curve, height);
+    }
+
+    static addSCurves() {
+        Road.add(ROAD.LENGTH.MEDIUM, ROAD.LENGTH.MEDIUM, ROAD.LENGTH.MEDIUM, -ROAD.CURVE.EASY);
+        Road.add(ROAD.LENGTH.MEDIUM, ROAD.LENGTH.MEDIUM, ROAD.LENGTH.MEDIUM, ROAD.CURVE.MEDIUM);
+        Road.add(ROAD.LENGTH.MEDIUM, ROAD.LENGTH.MEDIUM, ROAD.LENGTH.MEDIUM, ROAD.CURVE.EASY);
+        Road.add(ROAD.LENGTH.MEDIUM, ROAD.LENGTH.MEDIUM, ROAD.LENGTH.MEDIUM, -ROAD.CURVE.EASY);
+        Road.add(ROAD.LENGTH.MEDIUM, ROAD.LENGTH.MEDIUM, ROAD.LENGTH.MEDIUM, -ROAD.CURVE.MEDIUM);
+    }
    }
    

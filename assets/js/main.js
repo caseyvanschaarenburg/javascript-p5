@@ -64,8 +64,9 @@ window.addEventListener(
        canvas.style.backgroundColor = 'black';
        document.getElementById('container').appendChild(canvas);
 
-       ctx = canvas.getContext('2d' , {alpha: false});
-       ctx.imageSmoothingEnabled = false;
+       // ctx = canvas.getContext('2d' , {alpha: false});
+       // ctx.imageSmoothingEnabled = false;
+       ctx = canvas.getContext('2d');
        ctx.font = '20px Verdana';
 
        Keyboard.setHandlers();
