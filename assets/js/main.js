@@ -75,6 +75,7 @@ window.addEventListener(
        background = await Loader.loadImage('assets/img/backgrounds.png');
        sprites = await Loader.loadImage('assets/img/sprites.png');
 
+
        run();
 
     };
@@ -108,6 +109,10 @@ window.addEventListener(
         const dx = dt * 2 * speedPercent;
 
         position = Util.increase(position, dt * speed, trackLength);
+
+       skyOffset = Util.increase(skyOffset, (skySpeed * playerSegment.curve * (position )) / segmentLength, 1);
+       hillsOffset = Util.increase(hillsOffset, (hillsSpeed * playerSegment.curve * (position )) / segmentLength, 1);
+       woodsOffset = Util.increase(woodsOffset, (woodsSpeed * playerSegment.curve * (position )) / segmentLength, 1);
 
         if(keyLeft){
             playerX -= dx;
@@ -146,6 +151,10 @@ window.addEventListener(
     let dx = -(baseSegment.curve * basePercent);
     
     ctx.clearRect(0, 0, width, height);
+
+        Render.background(ctx, background, width, height, BACKGROUND.SKY, skyOffset, resolution * skySpeed * playerY);
+        Render.background(ctx, background, width, height, BACKGROUND.HILLS, hillsOffset, resolution * hillsSpeed * playerY);
+        Render.background(ctx, background, width, height, BACKGROUND.WOODS, woodsOffset, resolution * woodsSpeed * playerY);
     
     let n, i, segment, car, sprite, spriteScale, spriteX, spriteY;
     
