@@ -170,6 +170,8 @@ window.addEventListener(
         speed = Util.limit(speed, 0, maxSpeed);
         tire = Util.toInt(position / 500) % 2;
         bikeSpriteSelector = 6 + tire + hang + brake;
+
+        document.getElementById('speed').textContent = speed / 100;
     };
 
    const render = () => {
